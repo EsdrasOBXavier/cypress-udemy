@@ -8,3 +8,23 @@ Cypress.Commands.add('fillMandatoryFieldsAndSubmit', data =>{
      cy.get('.button[type="submit"]').click()
 })
 
+// Faker - Random
+
+const {faker} = require("@faker-js/faker")
+
+
+Cypress.Commands.add('createUser', () =>{
+    const fakerFirstName = faker.person.firstName()
+    Cypress.env('randomUser').firstName=fakerFirstName
+
+    const fakerLastName = faker.person.lastName()
+    Cypress.env('randomUser').lastName=fakerLastName
+
+    const fakerEmail = faker.internet.email(Cypress.env('randomUser').firstName, Cypress.env('randomUser').lastName)
+    Cypress.env('randomUser').email=fakerEmail
+
+    const fakerText = faker.lorem.text()
+    Cypress.env('randomUser').text=fakerText
+
+    return fakerFirstName, fakerLastName, fakerEmail, fakerText
+}) 

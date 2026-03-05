@@ -1,3 +1,12 @@
+const { cy } = require("@faker-js/faker")
+
+const campoNome = '#firstName'
+const campoSobrenome = '#lastName'
+const campoEmail = '#email'
+const campoPhone = '#phone'
+const campoTexto = '#open-text-area'
+
+
 describe('Central de Atendimento', () => {
   // Lesson 01 
   beforeEach(() => {
@@ -105,6 +114,19 @@ describe('Central de Atendimento', () => {
      cy.get('#open-text-area').type(longText, {delay: 0})
      cy.contains('button', 'Enviar').click()
      cy.get('.success').should('be.visible')
+  })
+
+  // Faker - Random User
+  it('Enviar Formulário randomizado', () => {
+    
+     cy.get(campoNome).type(Cypress.env(randomUser).firstName, {log:false})
+     cy.get(campoSobrenome).type(Cypress.env(randomUser).lastName, {log:false})
+     cy.get(campoEmail).type(Cypress.env(randomUser).email, {log:false})
+     cy.get(campoTexto).type(Cypress.env(randomUser).text, {log:false})
+     cy.contains('button', 'Enviar').click()
+     cy.get('.success').should('be.visible')
+
+  
   })
 
 })
