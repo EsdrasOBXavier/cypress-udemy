@@ -107,5 +107,23 @@ describe('Central de Atendimento', () => {
      cy.get('.success').should('be.visible')
   })
 
+  // Lesson 03 
+
+  it('Campo suspenso', () =>{
+
+    cy.get('#product').select('Blog', {delay: 100})
+    cy.get('#product').select('Cursos', {delay: 100})
+    cy.get('#product').select('Mentoria', {delay: 100})
+    cy.get('#product').select('YouTube', {delay: 100})
+
+  })
+
+// Extra 9 - Confirmation
+
+  it('Campo suspenso', () =>{
+
+    cy.get('#product').select('YouTube').should('have.value', 'youtube')
+    
+  })
 })
  
