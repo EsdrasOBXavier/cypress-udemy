@@ -138,13 +138,34 @@ describe('Central de Atendimento', () => {
 
   // Extra 10 - Each and cy.wrap
 
-  it.only('Tipo de Atendimento-extra', () => {
+  it('Tipo de Atendimento-extra', () => {
 
     cy.get('input[type="radio"]').each(typeOfService => {
       cy.wrap(typeOfService).check().should('be.checked')
         })
   })
 
+ // Lesson 05 
+  
+ it('Marcar e Desmarcar Checkboxes', () => {
 
+    cy.get('input[type="checkbox"][value="email"]').check().should('be.checked')
+    cy.get('input[type="checkbox"][value="phone"]').check().should('be.checked')
+    cy.get('input[type="checkbox"][value="email"]').uncheck().should('not.be.checked')
+    cy.get('input[type="checkbox"][value="phone"]').uncheck().should('not.be.checked')
+
+  })
+
+  it('Marcar e Desmarcar Checkboxes Wrap', () => {
+
+    cy.get('input[type="checkbox"]').each(typeOfContact => {
+      cy.wrap(typeOfContact).check().should('be.checked')
+    })
+    cy.get('input[type="checkbox"]').each(typeOfContact => {
+      cy.wrap(typeOfContact).uncheck().should('not.be.checked')
+    })
+   
+  })
+ 
 })
  
