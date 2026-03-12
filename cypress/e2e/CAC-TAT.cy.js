@@ -1,3 +1,5 @@
+
+
 describe('Central de Atendimento', () => {
   // Lesson 01 
   beforeEach(() => {
@@ -50,7 +52,7 @@ describe('Central de Atendimento', () => {
     cy.get('#firstName').type('Lua')
      cy.get('#lastName').type('Nova')
      cy.get('#email').type('lua.nova')
-     cy.get('#phone-checkbox').click
+     cy.get('#phone-checkbox').click()
      cy.get('#open-text-area').type(longText, {delay: 0})
      cy.get('.button[type="submit"]').click()
      cy.get('.error').should('be.visible')
@@ -118,12 +120,31 @@ describe('Central de Atendimento', () => {
 
   })
 
-// Extra 9 - Confirmation
+  // Extra 9 - Confirmation
 
   it('Campo suspenso', () =>{
 
     cy.get('#product').select('YouTube').should('have.value', 'youtube')
     
   })
+
+  //lesson 04
+  
+  it('Tipo de Atendimento', () => {
+
+    cy.get('input[type="radio"][value="feedback"]').check().should('be.checked')
+
+  })
+
+  // Extra 10 - Each and cy.wrap
+
+  it.only('Tipo de Atendimento-extra', () => {
+
+    cy.get('input[type="radio"]').each(typeOfService => {
+      cy.wrap(typeOfService).check().should('be.checked')
+        })
+  })
+
+
 })
  
