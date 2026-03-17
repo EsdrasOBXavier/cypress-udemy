@@ -1,5 +1,4 @@
 
-
 describe('Central de Atendimento', () => {
   // Lesson 01 
   beforeEach(() => {
@@ -166,6 +165,22 @@ describe('Central de Atendimento', () => {
     })
    
   })
- 
+
+  // Lesson 06
+
+  it('Fazer Upload de Arquivos', () => {
+    cy.get('#file-upload').selectFile('cypress/fixtures/example.json').should(input => { 
+      expect(input[0].files[0].name).to.equal('example.json')
+    }) 
+  })
+
+  // Extra 11 - drag and drop
+
+  it('Fazer Upload de Arquivos - drag and drop', () => {
+    cy.get('#file-upload').selectFile('cypress/fixtures/example.json', {action: 'drag-drop'})
+    .should(input => { 
+      expect(input[0].files[0].name).to.equal('example.json')
+    }) 
+  }) 
 })
  
