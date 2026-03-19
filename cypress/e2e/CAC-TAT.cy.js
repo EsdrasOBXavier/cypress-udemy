@@ -182,5 +182,22 @@ describe('Central de Atendimento', () => {
       expect(input[0].files[0].name).to.equal('example.json')
     }) 
   }) 
+
+  // Lesson 07
+
+  it('Navegação por links', () => {
+    cy.contains('a', 'Política de Privacidade')
+    .should('have.attr', 'href', 'privacy.html')
+    .and('have.attr', 'target', '_blank').click()
+
+  })
+
+  // Extra 12 - invoke
+
+  it.only('Remove Atribute', () =>{
+    cy.contains('a', 'Política de Privacidade')
+    .invoke('removeAttr', 'target').click()
+    cy.contains('h1', 'CAC TAT').should('be.visible')
+  })
 })
  
