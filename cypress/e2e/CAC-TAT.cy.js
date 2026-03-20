@@ -194,10 +194,12 @@ describe('Central de Atendimento', () => {
 
   // Extra 12 - invoke
 
-  it.only('Remove Atribute', () =>{
+  it('Remove Atribute', () =>{
     cy.contains('a', 'Política de Privacidade')
     .invoke('removeAttr', 'target').click()
     cy.contains('h1', 'CAC TAT').should('be.visible')
   })
+
+  
 })
  
