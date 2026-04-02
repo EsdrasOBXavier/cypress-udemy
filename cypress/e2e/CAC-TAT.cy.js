@@ -201,5 +201,10 @@ describe('Central de Atendimento', () => {
   })
   */
   
+  // Lesson 12
+
+  it('Ache o gato' , () => {
+    cy.get("#cat").invoke('show').should("be.visible")
+  })
 })
  
